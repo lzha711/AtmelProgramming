@@ -1,0 +1,36 @@
+// ATmega328P + Atmel Studio 7 + Proteus
+
+// 1. Basic bit manipulation command cheat sheet: 
+
+// Setting/ Clearing / Toggling:
+REGX |= (1 << bit); // set the corresponding bit in REGX
+REGX |= (1 << bit1) | (1 << bit2); // set two bits in REGX together
+REGX &= ~(1 << bit); // celar corresponding bit
+REGX &= ~( (1 << bit1)|(1 << bit2) ); // celar corresponding bit
+REGX ^= (1 << bit); // toggle bit
+REGX ^= ((1 << bit1) | (1 << bit2)); // toggle two bits
+
+
+// if desired, macros can be used to easily set/clear bits:
+#define SET_BIT(byte, bit) (byte |= (1 << bit))
+#define CLEAR_BIT(byte, bit) (byte &= ~(1 << bit))
+#define TOGGLE_BIT(byte, bit) (byte ^= (1 << bit))
+
+// Then when we want to use the macros, simply
+SET_BIT(REGX, bit);
+
+
+
+// Conditions
+if(REGX & (1<<bit)) {...} // if bit is set in REGX
+if(!(REGX & (1<<bit))) {...} // if bit is clear in REGX
+if( (REGX &(1<<bit1)) && (REGX & (1<< bit2)) && !(REGX & (1<<bit3)) ){...} //if bit1 and bit2 are set and bit3 is clear...
+
+
+// if desired, macros can be used for the above conditional commands
+#define BIT_IS_SET(byte, bit) (byte & (1<<bit)) //if bit is set
+#define BIT_IS_CLEAR(byte, bit) (!(byte & (1<<bit))) // if bit is clear
+
+// Then when we want to use the macros, simply 
+if(BIT_IS_SET(REGX, bit)) {...} // if bit is set in REGX
+if(BIT_IS_CLEAR(REGX, bit)) {...} // if bit is clear in REGX
