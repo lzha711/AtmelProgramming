@@ -1,2 +1,3 @@
 # AtmelProgramming
-Basic bit manipulations and C command in atmel studio
+A cheat sheet... 
+some basic bit manipulations and C command in atmel studio
